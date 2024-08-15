@@ -1,0 +1,9 @@
+{
+  "name": "budyn-bingo",
+  "version": "0.0.1",
+  "description": "budyn-bingo app",
+  "type": "module",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
