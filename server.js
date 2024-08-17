@@ -27,8 +27,11 @@ const io = new Server(server);
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-app.get('/', (req, res) => {
-  res.sendFile(join(__dirname, 'index.html'));
+// Serve static files from the React app
+app.use(express.static(join(__dirname, 'client/build')));
+
+app.get('/api/hello', (req, res) => {
+  res.json({ message: "Hello from the server!" });
 });
 
 io.on('connection', (socket) => {
@@ -61,6 +64,10 @@ io.on('connection', (socket) => {
       })();
     }
   });
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 
 server.listen(3000, () => {
   console.log('server running at http://localhost:3000');

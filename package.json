@@ -8,5 +8,13 @@
     "socket.io": "^4.7.5",
     "sqlite": "^5.1.1",
     "sqlite3": "^5.1.7"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "client-install": "npm install --prefix client",
+    "client": "npm start --prefix client",
+    "client-build": "npm run build --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "nodemon server.js"
   }
 }
